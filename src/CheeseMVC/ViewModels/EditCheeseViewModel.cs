@@ -5,11 +5,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace CheeseMVC.ViewModels
 {
-    public class AddCheeseViewModel
+    public class EditCheeseViewModel
     {
         [Required]
         [Display(Name = "Cheese Name")]
@@ -24,9 +23,16 @@ namespace CheeseMVC.ViewModels
 
         public List<SelectListItem> Categories { get; set; }
 
-        public AddCheeseViewModel(IEnumerable<CheeseCategory> categories)
-        {
+        public int ID { get; set; }
 
+        public EditCheeseViewModel()
+        { }
+
+       public EditCheeseViewModel(int id)
+        { ID = id; }
+
+        public EditCheeseViewModel(IEnumerable<CheeseCategory> categories)
+        {
             Categories = new List<SelectListItem>();
 
             foreach (var cat in categories)
@@ -37,11 +43,6 @@ namespace CheeseMVC.ViewModels
                     Text = cat.Name
                 });
             }
-        }
-
-        public AddCheeseViewModel()
-        {
-
         }
     }
 }

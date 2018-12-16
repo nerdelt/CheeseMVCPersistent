@@ -1,0 +1,29 @@
+﻿@model CheeseMVC.ViewModels.EditCheeseViewModel
+
+<h1>Edit Cheese: @Model.Name</h1>
+
+<form asp-controller="Cheese" asp-action="Edit" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input class="form-control" asp-for="Name" value="@Model.Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input class="form-control" asp-for="Description" value="@Model.Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.CategoryID"></label>
+        <select asp-for="@Model.CategoryID" asp-items="Model.Categories" value="@Model.CategoryID"></select>
+    </div>
+
+    <input type="hidden" name="CategoryID" value="@Model.CategoryID" />
+    <input type="hidden" name="ID" asp-route-ID="Model.ID"value="@Model.ID" />
+
+    <input type="submit" value="Edit Cheese" />
+
+
+</form>

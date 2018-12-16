@@ -1,4 +1,4 @@
-﻿@model List<CheeseMVC.Models.Cheese>
+﻿@model IList<CheeseMVC.Models.Cheese>
 
 <h1>@ViewBag.Title</h1>
 
@@ -7,16 +7,19 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
-        <td>Type</td>
+        <th>Category</th>
+        <th></th>
     </tr>
 
     @foreach (var cheese in Model)
     {
-        <tr>
-            <td>@cheese.Name</td>
-            <td>@cheese.Description</td>
-            <td>@cheese.Type</td>
-        </tr>
+    <tr>
+        <td>@cheese.Name</td>
+        <td>@cheese.Description</td>
+        <td>@cheese.Category.Name</td>
+        <td><a asp-controller="Cheese" asp-action="Edit" asp-route-cheeseId="@cheese.ID">Edit</a></td>
+
+    </tr>
     }
 </table>
 
@@ -24,5 +27,10 @@
 {
     <p>No cheeses yet!</p>
 }
-
-<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
+    <div>
+        <td>@Html.ActionLink("Add", "Add", "Cheese")</td> |
+        <td>@Html.ActionLink("Remove", "Remove", "Cheese")</td>
+    </div>
+    
+    
+   
