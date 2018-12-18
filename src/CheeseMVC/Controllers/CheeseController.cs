@@ -109,8 +109,9 @@ namespace CheeseMVC.Controllers
             return View(editCheeseViewModel);
         }
 
+        
         [HttpPost]
-        public IActionResult Edit([Bind("Name, Description,CategoryID, ID")] Cheese toEdit, int cheeseId, EditCheeseViewModel editCheeseViewModel)
+        public IActionResult Edit(Cheese toEdit, int cheeseId, EditCheeseViewModel editCheeseViewModel)
         {
             if (ModelState.IsValid)
             {
